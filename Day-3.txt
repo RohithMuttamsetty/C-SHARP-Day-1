@@ -1,0 +1,254 @@
+-------------------------------------------------------------------------------------------------------------------------//Class
+using System;
+	
+using System;
+namespace Day_3
+{
+	public class student
+	{
+		public string studentName;
+		public int studentRollno;
+	}
+
+	public class program
+	{
+		public static void Main(string[] args)
+		{
+			student st = new student();
+			Console.WriteLine("Please enter Student Name: ");
+			st.studentName = Console.ReadLine();
+		
+			Console.WriteLine("Please enter Student RollNumber: ");
+			st.studentRollno = Convert.ToInt32(Console.ReadLine());
+				
+			Console.WriteLine("Student Details : ");
+			Console.Write("Student Name: " + st.studentName);
+			Console.Write("Student Rollnumber: " + st.studentRollno);
+		
+			Console.ReadLine();
+		}
+	}
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------//Class
+using System;
+namespace Day_3
+{
+	public class student
+	{
+		public int studentId;
+		public string studentName;
+		public void getStudentDetails()
+		{
+			Console.WriteLine("Please enter Student Name : ");
+			studentName = Console.ReadLine();
+			
+			Console.WriteLine("Please enter Student Id: ");
+			studentId = Convert.ToInt32(Console.ReadLine());
+		}
+		
+		public void printStudentDetails()
+		{
+			Console.WriteLine("Student Details: ");
+			Console.WriteLine("Student Name: " + studentName);
+			Console.WriteLine("Student Roll Number: " + studentId);
+		}
+	}
+	public class hello
+	{
+		public static void Main()
+		{
+			student st = new student();
+			st.getStudentDetails();
+			st.printStudentDetails();
+			Console.ReadLine();
+		}
+	}
+}
+
+----------------------------------------------------------------------------------------------------------------------//Copy constructor
+using System;
+namespace Day_3
+{
+	public class student
+	{
+		public int studentId;
+		public string studentName;
+		
+		public student(student st3)
+		{
+			studentId = st3.studentId;
+			studentName = st3.studentName;
+		}
+		public student(int studentId, string studentName)
+		{
+			this.studentId = studentId;
+			this.studentName = studentName;
+		}
+		
+				
+		public void printStudentDetails()
+		{
+			Console.WriteLine("Student Details: ");
+			Console.WriteLine("Student Name: " + studentName);
+			Console.WriteLine("Student Roll Number: " + studentId);
+		}
+	}
+	public class hello
+	{
+		public static void Main()
+		{
+			student st = new student(99, "Rohith");
+			student st2 = new student(st);
+			
+			st2.printStudentDetails();
+			Console.ReadLine();
+		}
+	}
+}
+
+---------------------------------------------------------------------------------------------------------------------//Single Inheritance
+using System;
+
+namespace ConsoleApp1
+{
+    public class Animal
+    {
+        public void eat()
+        {
+            Console.WriteLine("Dog can eat");
+        }
+    }
+    public class Dog: Animal
+    {
+        public void bark()
+        {
+            Console.WriteLine("Dog can Bark");
+        }
+        static void Main(string[] args)
+        {
+            Dog d = new Dog();
+            d.eat();
+            d.bark();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+------------------------------------------------------------------------------------------//Labbook assignment Inheritance
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Day_3
+{
+
+    class Person 
+    {
+        public int age;
+        public void greet()
+        {
+            Console.WriteLine("Hello");
+        }
+        public void setAge(int age)
+        {
+           this.age =age;
+        }
+    }
+    class Student:Person
+    {
+        public void study()
+        {
+            Console.WriteLine("...I'm studying...");
+        }
+        public void showAge()
+        {
+            Console.WriteLine("My age is :"+age+" years");
+        }
+    }
+    class Professor:Person
+    {
+        public void explain()
+        {
+            Console.WriteLine("I'm explaining on the screen...");
+        }
+  
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person p = new Person();
+            p.greet();
+            Console.WriteLine("Enter th age of the person: ");
+            int age1 = Convert.ToInt32(Console.ReadLine());
+            Student s = new Student();
+            s.setAge(age1);
+            s.showAge();
+            Professor pr = new Professor();
+            pr.greet();
+            Console.WriteLine("Enter th age of the person: ");
+            int age2 = Convert.ToInt32(Console.ReadLine());
+            pr.setAge(age2);
+            pr.explain();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------//Labbook assignment2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Day_3
+{
+
+    class PhotoBook
+    {
+        protected int numPages;
+        public void getNumberPages() 
+        {
+            Console.WriteLine("Number of Pages are :" + numPages);
+        }
+       public PhotoBook()
+        {
+            numPages=16;
+        }
+       public  PhotoBook(int numPages)
+        {
+            this.numPages = numPages;
+        }
+    }
+    class BigPhotoBook:PhotoBook
+    {
+
+       public  BigPhotoBook()
+        {
+            numPages = 64;
+        }
+
+    }
+    class Class4
+    {
+        public static void Main()
+        {
+            PhotoBook pb = new PhotoBook();
+            pb.getNumberPages();
+            PhotoBook pb1 = new PhotoBook(24);
+            pb1.getNumberPages();
+            BigPhotoBook large = new BigPhotoBook();
+            large.getNumberPages();
+            Console.ReadLine();
+        }
+    }
+}
+
