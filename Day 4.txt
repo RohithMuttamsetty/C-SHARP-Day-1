@@ -1,0 +1,245 @@
+---------------------------------------------------------------------------------------------//Method Overloading
+using System;
+
+namespace Day_4
+{
+    class Program
+    {
+        int a = 5, b = 5;
+        public void mul()
+        {
+            Console.WriteLine("Multiplication is: " + (a * b));
+        }
+        public void mul(int a,int b)
+        {
+            Console.WriteLine("Multiplication is: " + (a * b));
+        }
+        public int mul(int a, int b, int c)
+        {
+            return (a * b);
+        }
+        public void mul(string a, string b)
+        {
+            Console.WriteLine("Multiplication is: " + (Convert.ToInt32(a) + Convert.ToInt32(b)));
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            p.mul();
+            p.mul(5,5);
+            Console.WriteLine("Multiplication : "+p.mul(1, 2, 4));
+            p.mul('m', 'n');
+            Console.ReadLine();
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------------------//Operator overloading
+using System;
+
+namespace ConsoleApp5
+{
+    class Mul
+    {
+        public int number1, number2;
+        public Mul(int number1, int number2)
+        {
+            this.number1 = number1;
+            this.number2 = number2;
+        }
+
+        public static Mul operator *(Mul m1, Mul m2)
+        {
+            Mul m3 = new Mul(0, 0);
+            m3.number1 = m1.number1 * m2.number1;
+            m3.number2 = m1.number2 * m2.number2;
+            return m3;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Mul m1 = new Mul(1, 2);
+            Mul m2 = new Mul(2, 2);
+            Mul m3 = new Mul(0, 0);
+            Console.WriteLine("Value before multiplication number 1: " + m3.number1 + " number 2" + m3.number2);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+--------------------------------------------------------------------------------------------------------------------//method overriding
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+ 
+
+namespace Day_4
+{
+    public class ClassA
+    {
+        int n1, n2;
+
+ 
+
+        public ClassA()
+        {
+            Console.WriteLine("I am Base class Constructor");
+        }
+        public ClassA(int i, int j)
+        {
+            n1 = i;
+            n2 = j;
+            Console.WriteLine("Parameterized Constructor Invoked");
+            Console.WriteLine("Values are" + n1 + " and " + n2);
+        }
+
+ 
+
+        public virtual void Swap()
+        {
+            Console.WriteLine("Hi I am swap Function ");
+        }
+    }
+
+ 
+
+    public class DerivedClass : ClassA
+    {
+
+ 
+
+        public DerivedClass() : base() { }
+        public DerivedClass(int i,int j) : base(i, j) {
+            base.Swap();
+        }
+    }
+    class Class3
+    {
+        public static void Main()
+        {
+            DerivedClass d = new DerivedClass();
+            DerivedClass d2 = new DerivedClass(10, 20);
+            Console.ReadLine();
+        }
+    }
+}
+
+-------------------------------------------------------------------------------------//
+using System;
+namespace today
+{
+class person
+{
+	public string name;
+	public  person(string name)
+	{
+		this.name=name;
+	}
+	public override string ToString()
+	{
+		return name;	
+	}
+}
+class student:person
+{
+	public student(string name):base(name) {}
+	
+	public void study()
+	{
+		Console.WriteLine("the student " +name+" is studying");	
+	}
+}
+class teacher:person
+{
+	public teacher(string name):base(name) {}
+	public void explain()
+	{
+		Console.WriteLine("the teacher " +name+" is explaining");
+	}
+}
+public class main
+{
+	public static void Main(string[]args)
+	{
+		student s1=new student("ravi");
+		s1.study();
+		teacher t1=new teacher("seema");
+		t1.explain();
+		person p1=new person("person");
+		Console.WriteLine(p1.ToString());
+		
+	}
+}
+}
+
+----------------------------------------------------------------------------------------------//Assignment
+using System;
+
+namespace ConsoleApp6
+{
+    class Shape
+    {
+        public virtual double Area()
+        {
+            return 0;
+        }
+        public virtual double Perimeter()
+        {
+            return 0;
+        }
+    }
+    class Rectangle : Shape
+    {
+        double side1, side2;
+        public Rectangle(double side1, double side2)
+        {
+            this.side1 = side1;
+            this.side2 = side2;
+        }
+        public override double Area()
+        {
+            return side1 * side2;
+        }
+        public override double Perimeter()
+        {
+            return (2 * (side1 + side2));
+        }
+    }
+    class Circle : Shape
+    {
+        double radius;
+        public Circle(double radius)
+        {
+            this.radius = radius;
+        }
+        public override double Area()
+        {
+            return ((22 / 7) * (radius * radius));
+        }
+        public override double Perimeter()
+        {
+            return (2 * (22 / 7) * radius);
+        }
+    }
+    class Class11
+    {
+        public static void Main()
+        {
+            Rectangle r = new Rectangle(3.5, 2.5);
+            Console.WriteLine("Area of rectangle:" + r.Area());
+            Console.WriteLine("Perimeter of rectangle:" + r.Perimeter());
+            Console.WriteLine();
+            Circle c = new Circle(2.5);
+            Console.WriteLine("Area of Circle is: " + c.Area());
+            Console.WriteLine("Perimeter of Circle is: " + c.Perimeter());
+            Console.ReadLine();
+        }
+    }
+}
+
